@@ -1,15 +1,22 @@
 <?php
-declare(strict_types=1);
+
+include __DIR__ . "../util/strict_typing.php";
 
 class Book {
 
-    private $id;
-    private $title;
-    private $author;
-    private $publicationYear;
-    private $genre;
+    private string $id;
+    private string $title;
+    private string $author;
+    private DateTime $publicationYear;
+    private string $genre;
 
-    public function __construct() {}
+    public function __construct(string $id, string $title, string $author, DateTime $publicationYear, string $genre) {
+        $this->id = $id;
+        $this->title = $title;  
+        $this->author = $author;
+        $this->publicationYear = $publicationYear;
+        $this->genre = $genre;
+    }
 
     // getters
     public function getId() { return $this->id; }
@@ -19,11 +26,11 @@ class Book {
     public function getGenre() { return $this->genre; } 
 
     // setters
-    public function setId($id) { $this->id = $id; }
-    public function setTitle($title) { $this->title = $title; }
-    public function setAuthor($author) {    $this->author = $author;}
-    public function setPublicationYear($publicationYear) { $this->publicationYear = $publicationYear; }
-    public function setGenre($genre) { $this->genre = $genre; }
+    public function setId(string $id) { $this->id = $id; }
+    public function setTitle(string $title) { $this->title = $title; }
+    public function setAuthor(string $author) {    $this->author = $author;}
+    public function setPublicationYear(DateTime $publicationYear) { $this->publicationYear = $publicationYear; }
+    public function setGenre(string $genre) { $this->genre = $genre; }
 
 
 }
