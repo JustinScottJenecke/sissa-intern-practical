@@ -12,47 +12,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1 class="text-4xl">
         Library Management System
     </h1>
     <hr>
-    <section>
+    <br>
+    <section class="p-2">
         <h3 class="text-2xl">
             Create New Book
         </h3>
         <div>
             <form method="post">
-                <input type="text" placeholder="Title" name="book_title" required>
-                <input type="text" placeholder="Author" name="book_author" required>
-                <input type="datetime" placeholder="Publication Year" name="book_pub_year" required>
-                <input type="text" placeholder="Genre" name="book_genre" required>
+                <input type="text" placeholder="Title" name="book_title" required class="p-2">
+                <input type="text" placeholder="Author" name="book_author" required class="p-2">
+                <input type="datetime" placeholder="Publication Year" name="book_pub_year" required class="p-2">
+                <input type="text" placeholder="Genre" name="book_genre" required class="p-2">
+                <br>
+                <button type="submit" class="bg-slate-300 hover:bg-blue-300 p-1 rounded-lg">
+                    Create
+                </button>
             </form>
         </div>
     </section>
-    <section>
+    <br>
+    <section class="p-2">
         <h3 class="text-2xl">All Books</h3>
-        <ul>
+        <div class="t-head border-b-2 border-black">
+            <div>ID</div>
+            <div>Title</div>
+            <div>Author</div>
+            <div>Publication Year</div>
+            <div>Genre</div>
+        </div>
+        <ul class="book-list">
             <li id="<?php echo $mock_book->getId();?>">
-                <h4 class="text-lg">
-                    <?php echo $mock_book->getTitle();?>
-                </h4>
-                <ul>
-                    <li>Author: <?php echo $mock_book->getId();?></li>
-                    <li>Publication Year: <?php echo $mock_book->getPublicationYear()->format("d-m-Y");?></li>
-                    <li>Genre: <?php echo $mock_book->getGenre();?></li>
+                <ul class="t-row">
+                    <li> <?php echo $mock_book->getId();?></li>
+                    <li> <?php echo $mock_book->getTitle();?></li>
+                    <li> <?php echo $mock_book->getAuthor();?></li>
+                    <li> <?php echo $mock_book->getPublicationYear()->format("d-m-Y");?></li>
+                    <li> <?php echo $mock_book->getGenre();?></li>
+                    <li>
+                        <form method="get">
+                            <input type="text" value="<?php echo $mock_book->getId();?>" hidden required>
+                            <button type="submit" class="bg-slate-300 hover:bg-blue-300 p-1 rounded-lg" name="update">
+                                Update
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="" method="post">
+                            <input type="text" value="<?php echo $mock_book->getId();?>" hidden required>
+                            <button type="submit" class="bg-slate-300 hover:bg-red-300 p-1 rounded-lg" name="delete">
+                                Delete
+                            </button>
+                        </form>
+                    </li>
                 </ul>
-                <div>
-                    <form method="get">
-                        <input type="text" value="<?php echo $mock_book->getId();?>" hidden required>
-                        <input type="submit" value="Update">
-                    </form>
-                    <form action="" method="post">
-                        <input type="text" value="<?php echo $mock_book->getId();?>" hidden required>
-                        <input type="submit" value="Delete">
-                    </form>
-                </div>
+            </li>
+            <li id="<?php echo $mock_book->getId();?>">
+                <ul class="t-row">
+                    <li> <?php echo $mock_book->getId();?></li>
+                    <li> <?php echo $mock_book->getPublicationYear()->format("d-m-Y");?></li>
+                    <li> <?php echo $mock_book->getGenre();?></li>
+                    <li>
+                        <form method="get">
+                            <input type="text" value="<?php echo $mock_book->getId();?>" hidden required>
+                            <input type="submit" value="Update">
+                        </form>
+                    </li>
+                    <li>
+                        <form action="" method="post">
+                            <input type="text" value="<?php echo $mock_book->getId();?>" hidden required>
+                            <input type="submit" value="Delete">
+                        </form>
+                    </li>
+                </ul>
             </li>
         </ul>
     </section>

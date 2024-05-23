@@ -1,0 +1,11 @@
+
+.t-head {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.t-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0.25rem 0;
+}
