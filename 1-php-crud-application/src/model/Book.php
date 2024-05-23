@@ -1,7 +1,5 @@
 <?php
 
-include __DIR__ . "../util/strict_typing.php";
-
 class Book {
 
     private string $id;
